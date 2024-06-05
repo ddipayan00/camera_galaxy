@@ -1,7 +1,7 @@
-import express from "express";
-import cors from "cors";
+const express = require("express");
+const cors = require("cors");
 // import logger from "./logger.cjs";
-import apiRouter from "./routes/apis.js";
+const apiRouter = require("./routes/apis.js");
 
 const PORT = process.env.PORT || 3001;
 const HOST = process.env.HOST || 'localhost';

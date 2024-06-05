@@ -1,7 +1,7 @@
-import { Router } from "express";
-import logger from "../logger.mjs";
-import { imageHandler } from "../controllers/ApiController.js";
-const router = Router();
+const express = require("express");
+const logger = require("../logger.js").default;
+const imageHandler = require("../controllers/ApiController.js");
+const router = express.Router();
 // const arrayBuffer = await file.arrayBuffer()
 // const buffer = Buffer.from(arrayBuffer)
 
@@ -35,4 +35,4 @@ router.route("/full_video").post(async (req, res) => {
     }
 });
 
-export default router;
+module.exports = router;

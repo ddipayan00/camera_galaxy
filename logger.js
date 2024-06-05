@@ -1,6 +1,8 @@
 // logger.js
 
-import { createLogger, format, transports } from 'winston';
+const { createLogger, format, transports } = require('winston');
+
+
 const { combine, timestamp, printf } = format;
 
 // Define your custom format
@@ -25,4 +27,4 @@ const logger = createLogger({
   ]
 });
 
-export default logger;
+module.exports = logger;
