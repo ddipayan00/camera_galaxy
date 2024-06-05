@@ -1,32 +1,27 @@
-const logger = require("../logger.js");
 
 
-const imageHandler = async (req, res) => {
+export const imageHandler = async (req, res) => {
     try {
-        logger.debug(JSON.stringify(req))
-        let myFile = req.files;
+        let myFile = req?.files;
         if (myFile) {
             
         };
-        res.status(200).send("<html>gta success in imageHandler</html>");
+        return res.status(200).send("<html>gta success</html>");
     }
     catch (err) {
-        logger.info(JSON.stringify(err));
-        res.status(500).send("<html>gta error in imageHandler</html>");
+        console.error(err);
+        return res.status(500).send("<html>gta error</html>");
     }
-}
-const imageHandler1 = async (req, res) => {
+};
+export const imageHandler1 = async (req, res) => {
     try {
-        let myFile = req.files;
+        let myFile = req?.files;
         if (myFile) {
             
         };
-        res.status(200).send("<html>gta success in imageHandler1</html>");
+        return res.status(200).send("<html>gta success</html>");
     }
     catch (err) {
-        logger.info(JSON.stringify(err));
-        res.status(500).send("<html>gta error in imageHandler1</html>");
+        return res.status(500).send("<html>gta</html>");
     }
-}
-
-module.exports = imageHandler,imageHandler1;
+};

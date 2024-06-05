@@ -1,7 +1,6 @@
-const express = require("express");
-const logger = require("../logger.js").default;
-const imageHandler = require("../controllers/ApiController.js");
-const router = express.Router();
+import { Router } from "express";
+import {imageHandler} from "../controllers/ApiController.js";
+const router = Router();
 // const arrayBuffer = await file.arrayBuffer()
 // const buffer = Buffer.from(arrayBuffer)
 
@@ -18,7 +17,8 @@ router.route("/tiny_video").get(async (req, res) => {
         res.status(200).send("<html>gta</html>")
     }
     catch (err) {
-        logger.info(JSON.stringify(err));
+        info(JSON.stringify(err));
+        res.status(200).send("<html>gta</html>")
     }
 });
 
@@ -26,13 +26,13 @@ router.route("/full_video").post(async (req, res) => {
     try {
         let myFile = req.files;
         if (myFile) {
-            logger.info(JSON.stringify(myFile)) 
+            info(JSON.stringify(myFile)) 
         };
         res.status(200).send("<html>gta</html>")
     }
     catch (err) {
-        logger.info(JSON.stringify(err));
+        info(JSON.stringify(err));
     }
 });
 
-module.exports = router;
+export default router;
