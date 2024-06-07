@@ -1,10 +1,11 @@
 import { Router } from "express";
+import multer from 'multer';
 import {imageHandler} from "../controllers/ApiController.js";
 const router = Router();
 // const arrayBuffer = await file.arrayBuffer()
 // const buffer = Buffer.from(arrayBuffer)
-
-router.route("/image").get(imageHandler);
+const upload = multer({ dest: 'uploads/' });
+router.route("/image").post(upload.single('file'),imageHandler);
 
 
 router.route("/tiny_video").get(async (req, res) => {

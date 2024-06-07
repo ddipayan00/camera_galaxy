@@ -1,29 +1,44 @@
-import axios from "axios";
-backend_url = "http://localhost:3001"
+let backend_url = "http://localhost:3001";
 
 
-function handleFileUpload(event){
-    console.log("handleFileUpload()")
-    event.preventDefault();
-    if (event.files.length > 0)  {
-        const formData = new FormData();
-        formData.append('image', event.files[0]);
+const handleFileUpload = (event) => {
+    try{ 
+        console.log("gtavi")
+        event.preventDefault(); 
+        if (event?.target[0]?.files[0]?.length > 0)  {
+            const formData = new FormData();
+            console.log(event?.target[0]?.files[0]);
+            formData.append('file', event?.target[0]?.files[0]);
+        }
+        try {
+            axios.get(url=`${backend_url}/test/simple-get`)
+            .then((res)=> {
+                console.log(res);
+            }).catch((error) => {
+                console.log(error);
+            });
+
+            axios.post(url=`${backend_url}/upload/image`,formData,{headers: {
+                'Content-Type': `multipart/form-data`,
+                'Content-Length': formData.length
+            }}).then((res)=> {
+                console.log(res);
+                if (res?.status == 200) {
+                    console.log("file uploaded");
+                }
+            }).catch((error) => {
+                
+            });
+        } catch (error) {
+            
+        }
     }
-    const payload = {
-        filename: file.name,
-        data: base64String,
-    };
-    try {
-        axios.post(url=`${backend_url}/upload/image`,formData,{headers: {
-            'Content-Type': 'multipart/form-data',
-        }})
-        .then(()=> {
-            // alert("gta v");
-        }).catch(() => {
-    
-        });
-    } catch (error) {
-        
+    catch(e){
+        console.log(e);
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const fetchButton = document.getElementById('fetchButton');
+    fetchButton.addEventListener('submit',handleFileUpload);
+});
 

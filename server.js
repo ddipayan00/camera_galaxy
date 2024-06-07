@@ -1,11 +1,11 @@
 import express from "express";
 import cors from "cors";
-// import logger from "./logger.cjs";
 import apiRouter from "./routes/apis.js";
+import testRoute from "./routes/test.js";
 
-const PORT = process.env.PORT || 3001;
-const HOST = process.env.HOST || 'localhost';
-const is_secure_site = process.env.SECURESITE || false;
+const PORT = process.env.APP_PORT || 3001;
+const HOST = process.env.APP_HOST || 'localhost';
+const is_secure_site = process.env.APP_SECURESITE || false;
 let PROTOCOL;
 if (is_secure_site) {
     PROTOCOL = "https"
@@ -19,6 +19,7 @@ const app = express();
 
 
 app.use(cors());
+app.use("/test",testRoute);
 app.use("/upload",apiRouter);
 
 // app.get("/user", (req, res) => {
