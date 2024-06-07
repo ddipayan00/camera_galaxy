@@ -2,13 +2,16 @@
 
 export const imageHandler = async (req, res) => {
     try {
-        console.log(req);
-        let myFile = req?.files;
+        let myFile = req?.file;
         if (myFile) {
-            const fileContent = fs.readFileSync(file.path);
-            console.log(myFile);
+            console.log("file found!");
+            console.log("req.files : ",myFile);
+            return res.status(200).json({
+                message: 'File uploaded successfully',
+                file: req.file
+            });
         };
-        return res.status(200).send("<html>gta success</html>");
+        return res.status(200).send("<html>file not found</html>");
     }
     catch (err) {
         console.error(err);

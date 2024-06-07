@@ -1,19 +1,20 @@
 import { Router } from "express";
-import multer from 'multer';
-import {imageHandler} from "../controllers/ApiController.js";
+import { imageHandler } from "../controllers/ApiController.js";
+import { upload } from "../configs/multer_config.js";
+
 const router = Router();
-// const arrayBuffer = await file.arrayBuffer()
-// const buffer = Buffer.from(arrayBuffer)
-const upload = multer({ dest: 'uploads/' });
-router.route("/image").post(upload.single('file'),imageHandler);
+
+
+router.route("/image").post(upload.single('file'), imageHandler);
 
 
 router.route("/tiny_video").get(async (req, res) => {
     try {
 
-        let myFile = req.files;
+        let myFile = req?.file;
         if (myFile) {
-            
+            console.log("file found!");
+            console.log("req.files : ",myFile);
         };
         res.status(200).send("<html>gta</html>")
     }
@@ -27,7 +28,7 @@ router.route("/full_video").post(async (req, res) => {
     try {
         let myFile = req.files;
         if (myFile) {
-            info(JSON.stringify(myFile)) 
+            info(JSON.stringify(myFile))
         };
         res.status(200).send("<html>gta</html>")
     }

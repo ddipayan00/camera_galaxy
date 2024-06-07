@@ -19,11 +19,11 @@ const logger = createLogger({
   ),
   transports: [
     new transports.Console(), // Log to the console
-    new transports.File({ filename: './logs/combined.log' }), // Log to a file
-    new transports.File({ filename: './logs/errors.log', level: 'error' }), // Separate file for error logs
-    new transports.File({ filename: './logs/debug.log', level: 'debug' }),
-    new transports.File({ filename: './logs/info.log', level: 'info' }), // Separate file for info logs
-    new transports.File({ filename: './logs/warning.log', level: 'warn' })
+    new transports.File({ filename: './workdir/logs/combined.log' }), // Log to a file
+    new transports.File({ filename: './workdir/logs/errors.log', level: 'error' }), // Separate file for error logs
+    new transports.File({ filename: './workdir/logs/debug.log', level: 'debug' }),
+    new transports.File({ filename: './workdir/logs/info.log', level: 'info' }), // Separate file for info logs
+    new transports.File({ filename: './workdir/logs/warning.log', level: 'warn' })
   ]
 });
 
