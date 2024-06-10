@@ -4,8 +4,9 @@ export const imageHandler = async (req, res) => {
     try {
         let myFile = req?.file;
         if (myFile) {
-            console.log("file found!");
+            console.log("file uploaded!");
             console.log("req.files : ",myFile);
+
             return res.status(200).json({
                 message: 'File uploaded successfully',
                 file: req.file
