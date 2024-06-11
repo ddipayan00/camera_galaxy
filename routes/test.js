@@ -1,4 +1,5 @@
 import { Router } from "express";
+import {connect_database} from "../controllers/testController.js";
 const router = Router();
 
 router.route("/simple-get").get((req,res) => {
@@ -12,5 +13,7 @@ router.route("/simple-post").post((req,res) => {
         message: "post-test"
     });
 });
+
+router.route("/create-database").get(connect_database);
 
 export default router;
