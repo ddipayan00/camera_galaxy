@@ -1,8 +1,9 @@
 import fs from 'fs';
 
-export const create_working_directory = () => {
+const create_working_directory = () => {
     const dir = './workdir';
-    if (!fs.existsSync(dir)){
+    if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
-}
+};
+export default create_working_directory; 

@@ -1,29 +1,13 @@
-import { createMongoClient } from "./dbController.js";
-
-const create_client = () => {
-  try {
-    const client = createMongoClient();
-    if (client) {
-      const db = client.connect();
-      return db;
-    } else {
-      return false;
-    }
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
-
+import mongoose from "mongoose";
+import process_env from "../configs/global_config.js";
 export const connect_database = async (req, res) => {
   try {
     const db = create_client();
     if (db) {
-      const list_of_databases = await db.listDatabases();
-      console.log(list_of_databases);
-      console.log("instance : ", typeof list_of_databases);
+      const group_res = await mongoose.model("Group").find();
+
       return res.status(200).json({
-        result: list_of_databases,
+        result: group_res,
         message: "database creation success!",
         statusCode: 200,
       });

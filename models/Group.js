@@ -1,7 +1,7 @@
 import mongoose, { model } from "mongoose";
 import autopopulate from "mongoose-autopopulate";
 
-const subTopicSchema = new mongoose.Schema({
+const groupSchema = new mongoose.Schema({
   group_name: {
     type: String,
     required: true,
@@ -58,5 +58,5 @@ const subTopicSchema = new mongoose.Schema({
   },
 });
 
-subTopicSchema.plugin(autopopulate);
-export default mongoose.model("SubTopic", subTopicSchema);
+groupSchema.plugin(autopopulate);
+export default mongoose.model("Group", groupSchema);
