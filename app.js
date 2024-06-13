@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import apiRouter from "./routes/apis.js";
-import testRoute from "./routes/test.js";
+import apiRouter from "./routes/apisRoute.js";
+import testRoute from "./routes/testRoute.js";
 
 
 const app_builder = () => {

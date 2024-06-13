@@ -76,4 +76,4 @@ const postSchema = new mongoose.Schema({
 });
 
 postSchema.plugin(autopopulate);
-export default mongoose.model("Image", postSchema);
+export default mongoose.model("Post", postSchema);

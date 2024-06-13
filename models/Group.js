@@ -1,4 +1,4 @@
-import mongoose, { model } from "mongoose";
+import mongoose from "mongoose";
 import autopopulate from "mongoose-autopopulate";
 
 const groupSchema = new mongoose.Schema({
